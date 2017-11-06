@@ -34,7 +34,7 @@ $arrPostData = array();
 	if(isset($txtauto[$input])){
 		$arrPostData['messages'][0]['text'] = $txtauto[$input];
 	}else {
-		 $arrPostData['messages'][0]['text'] = "น้องไบต์ไม่เข้าใจคำถามค่ะ ? ".$arrJson['events'][0]['source']['type'] ;
+		 $arrPostData['messages'][0]['text'] = "น้องไบต์ไม่เข้าใจคำถามค่ะ ? ".$arrJson['events'][0]['message']['type'] ;
 	}
 
 
