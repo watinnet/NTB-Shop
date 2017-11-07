@@ -18,9 +18,9 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/ntbshop/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
  
-if (strpos($_msg, 'สอนเป็ด') !== false) {
-  if (strpos($_msg, 'สอนเป็ด') !== false) {
-    $x_tra = str_replace("สอนเป็ด","", $_msg);
+if (strpos($_msg, 'สอนหนู') !== false) {
+  
+    $x_tra = str_replace("สอนหนู","", $_msg);
     $pieces = explode("|", $x_tra);
     $_question=str_replace("[","",$pieces[0]);
     $_answer=str_replace("]","",$pieces[1]);
@@ -43,8 +43,8 @@ if (strpos($_msg, 'สอนเป็ด') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนเป็ด';
-  }
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนหนู';
+  
 }else{
   if($isData >0){
    foreach($data as $rec){
@@ -57,7 +57,7 @@ if (strpos($_msg, 'สอนเป็ด') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
+    $arrPostData['messages'][0]['text'] = 'สามารถสอนให้หนูรู้เรื่องได้เพียงพิมพ์: สอนหนู[คำถาม|คำตอบ]';
   }
 }
  
