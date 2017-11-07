@@ -14,7 +14,7 @@ $_msg = $arrJson['events'][0]['message']['text'];
  
 $api_key="Z_agOr9X72YwKeSNWcvv81LV_9Q8mgZo";
 $url = 'https://api.mlab.com/api/1/databases/ntbshop/collections/ntbcollection?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/ntbshop/collections/ntbcollection?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$json = file_get_contents('https://api.mlab.com/api/1/databases/ntbshop/collections/ntbcollection?apiKey='.$api_key.'&q={"question":"'.urlencode(trim($_msg)).'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
  
@@ -46,14 +46,13 @@ if (strpos($_msg, 'สอนหนู') !== false) {
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนหนู';
   
 }else{
-  if($isData >0){
+  if($isData > 0){
    foreach($data as $rec){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = $rec->answer;
    }
-   
   }else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
