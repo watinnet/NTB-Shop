@@ -53,7 +53,7 @@ if (strpos($_msg, 'สอนหนู') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
    // $arrPostData['messages'][0]['text'] = $rec->answer;
    }
-   $arrPostData['messages'][0]['text'] = $datar;
+   $arrPostData['messages'][0]['text'] = $data;
   }else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
